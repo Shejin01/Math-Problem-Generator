@@ -6,3 +6,7 @@
 .math {
 	font-size: 36px;
 }
+
+.question {
+	display: inline-block;
+}
