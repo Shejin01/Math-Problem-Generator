@@ -54,3 +54,8 @@ function checkAnswers() {
 	}
 	MathJax.typeset();
 }
+
+function clearLastProblem() {
+	let questions = document.getElementsByClassName("question");
+	questions[questions.length-1].remove();
+}
