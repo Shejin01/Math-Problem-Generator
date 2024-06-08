@@ -1,8 +1,21 @@
 MathJax = {
-  loader: {load: ['input/asciimath', 'output/chtml']}
+  loader: {load: ['input/asciimath', 'output/chtml']},
 }
 
+const shakeAnimation = [
+	{rotate: "0deg"},
+	{rotate: "3deg"},
+	{rotate: "-3deg"}, 
+	{rotate: "0deg"}
+];
+  
+const shakeTiming = {
+	duration: 300,
+	iterations: 1,
+};
+
 function createProblem() {
+	let questionHolder = document.getElementById("questionHolder");
 	var div = document.createElement("div");
 	var problem = document.createElement("p");
 	var answerBox = document.createElement("input")
@@ -10,6 +23,7 @@ function createProblem() {
 
 	div.classList.add("question")
 	problem.classList.add("problem");
+	problem.setAttribute("tabindex", "-1")
 	answerBox.classList.add("answerBox");
 	answerBox.setAttribute("type", "number");
 
@@ -35,7 +49,8 @@ function createProblem() {
 	
 	div.appendChild(problem);
 	div.appendChild(answerBox);
-	document.body.appendChild(div);
+	questionHolder.appendChild(div);
+
 	MathJax.typeset();
 }
 
@@ -48,9 +63,12 @@ function checkAnswers() {
 	let questions = document.getElementsByClassName("question");
 	for (let i = 0; i < questions.length; i++) {
 		if (questions[i].children[0].value == questions[i].children[1].value) {
-			questions[i].children[0].style.color = "green";
+			questions[i].style.borderColor = "green";
 		}
-		else questions[i].children[0].style.color = "red";
+		else {
+			questions[i].style.borderColor = "red";
+			questions[i].animate(shakeAnimation, shakeTiming);
+		}
 	}
 	MathJax.typeset();
 }

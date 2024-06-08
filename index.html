@@ -10,7 +10,7 @@
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-	<div>
+	<div id="settings">
 		<label for="operation">Choose an operation:</label>
 		<select name="operation" id="operation">
 			<option value="+">Addition</option>
@@ -22,6 +22,13 @@
 		<button id="ClearLastProblemButton" onclick="clearLastProblem()">Clear Last Problem</button>
 		<button id="ClearProblemsButton" onclick="clearProblems()">Clear Problems</button>
 		<button id="CheckAnswerButton" onclick="checkAnswers()">Check Answers</button>
+	</div>
+
+	<div id="questionHolder">
+		<div class="question">
+			<p class="problem">$$a^2 + b^2 = c^2$$</p>
+			<input class="answerBox" type="number">
+		</div>
 	</div>
 </body>
 </html>
