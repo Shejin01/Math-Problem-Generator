@@ -16,6 +16,8 @@ const shakeTiming = {
 
 let questionHolder = document.getElementById("questionHolder");
 let questions = document.getElementsByClassName("question");
+let hideMenuButton = document.getElementById("HideMenuButton");
+let settingsMenu = document.getElementById("settings");
 
 function createProblem() {
 	var div = document.createElement("div");
@@ -81,5 +83,8 @@ function checkAnswers() {
 			questions[i].animate(shakeAnimation, shakeTiming);
 		}
 	}
-	MathJax.typeset();
+}
+
+function hideMenu() {
+	settingsMenu.classList.toggle("hidden");
 }
