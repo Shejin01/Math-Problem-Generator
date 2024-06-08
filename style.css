@@ -1,8 +1,22 @@
 :root {
 	background-color: #02010A;
 	color: white;
-	--green-color: #00ff00;
-	--red-color: #ff0000;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: black; 
+}
+   
+::-webkit-scrollbar-thumb {
+	background: #888; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+	background: #555; 
 }
 
 .math {

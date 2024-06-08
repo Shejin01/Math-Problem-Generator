@@ -31,21 +31,29 @@ function createProblem() {
 	let a = Math.floor(Math.random() * 20);
 	let b = Math.floor(Math.random() * 20);
 
-	if (operation.value == '+') {
-		problem.innerHTML = String.raw`\[${a} + ${b} = \]`;
-		problem.value = a+b;
-	}
-	if (operation.value == '-') {
-		problem.innerHTML = String.raw`\[${a} - ${b} = \]`;
-		problem.value = a-b;
-	}
-	if (operation.value == '*') {
-		problem.innerHTML = String.raw`\[${a} \times ${b} = \]`;
-		problem.value = a*b;
-	}
-	if (operation.value == '/') {
-		problem.innerHTML = String.raw`\[\frac{${a}}{${b}} = \]`;
-		problem.value = Math.round(a/b * 100) / 100;
+	switch (operation.value) {
+		case '+': 
+			problem.innerHTML = String.raw`\[${a} + ${b} = \]`;
+			problem.value = a+b;
+			break;
+		
+		case '-':
+			problem.innerHTML = String.raw`\[${a} - ${b} = \]`;
+			problem.value = a-b;
+			break;
+		
+		case '*':
+			problem.innerHTML = String.raw`\[${a} \times ${b} = \]`;
+			problem.value = a*b;
+			break;
+		
+		case '/':
+			problem.innerHTML = String.raw`\[\frac{${a}}{${b}} = \]`;
+			problem.value = Math.round(a/b * 100) / 100;
+			break;
+		
+		default:
+			break;
 	}
 	
 	div.appendChild(problem);
