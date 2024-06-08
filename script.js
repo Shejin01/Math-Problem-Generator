@@ -14,16 +14,17 @@ const shakeTiming = {
 	iterations: 1,
 };
 
+let questionHolder = document.getElementById("questionHolder");
+let questions = document.getElementsByClassName("question");
+
 function createProblem() {
-	let questionHolder = document.getElementById("questionHolder");
 	var div = document.createElement("div");
 	var problem = document.createElement("p");
 	var answerBox = document.createElement("input")
 	var operation = document.getElementById("operation");
 
-	div.classList.add("question")
+	div.classList.add("question");
 	problem.classList.add("problem");
-	problem.setAttribute("tabindex", "-1")
 	answerBox.classList.add("answerBox");
 	answerBox.setAttribute("type", "number");
 
@@ -50,17 +51,19 @@ function createProblem() {
 	div.appendChild(problem);
 	div.appendChild(answerBox);
 	questionHolder.appendChild(div);
-
+	questions = document.getElementsByClassName("question");
 	MathJax.typeset();
 }
 
 function clearProblems() {
-	let questions = document.getElementsByClassName("question");
 	while (questions.length > 0) questions[0].remove();
 }
 
+function clearLastProblem() {
+	questions[questions.length-1].remove();
+}
+
 function checkAnswers() {
-	let questions = document.getElementsByClassName("question");
 	for (let i = 0; i < questions.length; i++) {
 		if (questions[i].children[0].value == questions[i].children[1].value) {
 			questions[i].style.borderColor = "green";
@@ -71,9 +74,4 @@ function checkAnswers() {
 		}
 	}
 	MathJax.typeset();
-}
-
-function clearLastProblem() {
-	let questions = document.getElementsByClassName("question");
-	questions[questions.length-1].remove();
 }
