@@ -87,4 +87,6 @@ function checkAnswers() {
 
 function hideMenu() {
 	settingsMenu.classList.toggle("hidden");
+	settingsMenu.style.width = settingsMenu.classList.contains("hidden") ? "0px" : "200px";
+
 }
