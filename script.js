@@ -18,6 +18,14 @@ let questionHolder = document.getElementById("questionHolder");
 let questions = document.getElementsByClassName("question");
 let hideMenuButton = document.getElementById("HideMenuButton");
 let settingsMenu = document.getElementById("settings");
+let lowerLimit = document.getElementById("LowerLimit");
+let upperLimit = document.getElementById("UpperLimit");
+
+function randomBetween(min, max) {
+	min = Number(min);
+	max = Number(max);
+	return Number(Math.floor(Math.random() * (max - min + 1)) + min);
+}
 
 function createProblem() {
 	var div = document.createElement("div");
@@ -30,12 +38,12 @@ function createProblem() {
 	answerBox.classList.add("answerBox");
 	answerBox.setAttribute("type", "number");
 
-	let a = Math.floor(Math.random() * 20);
-	let b = Math.floor(Math.random() * 20);
+	let a =	randomBetween(lowerLimit.value, upperLimit.value);
+	let b = randomBetween(lowerLimit.value, upperLimit.value);
 
 	switch (operation.value) {
 		case '+': 
-			problem.innerHTML = String.raw`\[${a} + ${b} = \]`;
+			problem.innerHTML = String.raw`\[${a} + ${b} = ${a+b}\]`;
 			problem.value = a+b;
 			break;
 		
@@ -85,8 +93,11 @@ function checkAnswers() {
 	}
 }
 
+document.addEventListener("keypress", (event) => {
+	if (event.code == "Enter") checkAnswers();
+});
+
 function hideMenu() {
 	settingsMenu.classList.toggle("hidden");
 	settingsMenu.style.width = settingsMenu.classList.contains("hidden") ? "0px" : "200px";
-
 }
