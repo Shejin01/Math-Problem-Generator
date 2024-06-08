@@ -43,7 +43,7 @@ function createProblem() {
 
 	switch (operation.value) {
 		case '+': 
-			problem.innerHTML = String.raw`\[${a} + ${b} = ${a+b}\]`;
+			problem.innerHTML = String.raw`\[${a} + ${b} = \]`;
 			problem.value = a+b;
 			break;
 		
