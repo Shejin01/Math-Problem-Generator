@@ -37,6 +37,7 @@ function createProblem() {
 	problem.classList.add("problem");
 	answerBox.classList.add("answerBox");
 	answerBox.setAttribute("type", "number");
+	answerBox.setAttribute("title", "Answer");
 
 	let a =	randomBetween(lowerLimit.value, upperLimit.value);
 	let b = randomBetween(lowerLimit.value, upperLimit.value);
@@ -44,22 +45,23 @@ function createProblem() {
 	switch (operation.value) {
 		case '+': 
 			problem.innerHTML = String.raw`\[${a} + ${b} = \]`;
-			problem.value = a+b;
+			problem.dataset.answer = a+b;
 			break;
 		
 		case '-':
 			problem.innerHTML = String.raw`\[${a} - ${b} = \]`;
-			problem.value = a-b;
+			problem.dataset.answer = a-b;
 			break;
 		
 		case '*':
 			problem.innerHTML = String.raw`\[${a} \times ${b} = \]`;
-			problem.value = a*b;
+			problem.dataset.answer = a*b;
 			break;
 		
 		case '/':
+			if (b == 0) b = b + 1;
 			problem.innerHTML = String.raw`\[\frac{${a}}{${b}} = \]`;
-			problem.value = Math.round(a/b * 100) / 100;
+			problem.dataset.answer = Math.round(a/b * 100) / 100;
 			break;
 		
 		default:
@@ -78,12 +80,12 @@ function clearProblems() {
 }
 
 function clearLastProblem() {
-	questions[questions.length-1].remove();
+	if (questions.length > 0) questions[questions.length-1].remove();
 }
 
 function checkAnswers() {
 	for (let i = 0; i < questions.length; i++) {
-		if (questions[i].children[0].value == questions[i].children[1].value) {
+		if (questions[i].children[0].dataset.answer == questions[i].children[1].value) {
 			questions[i].style.borderColor = "green";
 		}
 		else {

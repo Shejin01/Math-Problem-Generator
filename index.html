@@ -18,8 +18,8 @@
 				<option value="*">Multiplication</option>
 				<option value="/">Division</option>
 			</select>
-			<input id="LowerLimit" class="ui" type="number" value=0 placeholder="Lower Limit">
-			<input id="UpperLimit" class="ui" type="number" value=20 placeholder="Upper Limit">
+			<input id="LowerLimit" class="ui" type="number" value=0 placeholder="Lower Limit" title="Lower Limit">
+			<input id="UpperLimit" class="ui" type="number" value=20 placeholder="Upper Limit" title="Upper Limit">
 			<br>
 			<button id="GenerateProblemButton" class="ui" onclick="createProblem()">Generate Problem</button>
 			<button id="ClearLastProblemButton" class="ui" onclick="clearLastProblem()">Clear Last Problem</button>
@@ -29,8 +29,8 @@
 
 		<div id="questionHolder">
 			<div class="question">
-				<p class="problem">$$a^2 + b^2 = c^2$$</p>
-				<input class="answerBox" type="number">
+				<p class="problem" data-answer=1>$$a^2 + b^2 = c^2$$</p>
+				<input class="answerBox" type="number" title="Answer">
 			</div>
 		</div>
 	</div>
