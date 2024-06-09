@@ -84,19 +84,24 @@ body {
 }
 
 .question {
-	width: 177px;
-	height: 70px;
 	margin: 10px;
 	padding: 3px;
 	border: 1px solid var(--gray-color);
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px 5px black;
-	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
 	transition: border-color 0.25s ease-in;
 }
 
 .question:hover {
 	border-color: var(--light-gray-color);
+}
+
+.problem {
+	margin: 0;
 }
 
 .answerBox {
