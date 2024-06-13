@@ -11,14 +11,17 @@
 	<div id="container">
 		<div id="settings">
 			<br><br><br>
+			<p>Round Decimal Places: <input id="RoundDecimal" type="checkbox"></p>
 			<div>
 				<label for="operation">Choose an operation:</label>
-				<select name="operation" id="operation" class="ui">
+				<select style="width: 90%;" name="operation" id="operation" class="ui">
 					<option value="+">Addition</option>
 					<option value="-">Subtraction</option>
 					<option value="*">Multiplication</option>
 					<option value="/">Division</option>
 				</select>
+				<br><br>
+				<label for="LowerLimit">Range: </label>
 				<input id="LowerLimit" class="ui" type="number" value=0 placeholder="Lower Limit" title="Lower Limit">
 				<input id="UpperLimit" class="ui" type="number" value=20 placeholder="Upper Limit" title="Upper Limit">
 			</div>

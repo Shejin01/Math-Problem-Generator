@@ -20,6 +20,7 @@ let hideMenuButton = document.getElementById("HideMenuButton");
 let settingsMenu = document.getElementById("settings");
 let lowerLimit = document.getElementById("LowerLimit");
 let upperLimit = document.getElementById("UpperLimit");
+let roundDecimal = document.getElementById("RoundDecimal");
 
 function randomBetween(min, max) {
 	min = Number(min);
@@ -61,7 +62,9 @@ function createProblem() {
 		case '/':
 			if (b == 0) b = b + 1;
 			problem.innerHTML = String.raw`\[\frac{${a}}{${b}} = \]`;
-			problem.dataset.answer = Math.round(a/b * 100) / 100;
+			if (roundDecimal.checked) problem.dataset.answer = Math.round(a/b * 100) / 100;
+			else problem.dataset.answer = Math.floor(a/b * 100) / 100;
+
 			break;
 		
 		default:
@@ -118,7 +121,7 @@ function changeSettingsResolution() {
 		}
 		else {
 			settingsMenu.style.width = "100vw";
-			settingsMenu.style.height = "125px";
+			settingsMenu.style.height = "150px";
 			settingsMenu.style.borderWidth = "0px 0px 1px 0px";
 		}
 	}
