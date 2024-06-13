@@ -101,5 +101,29 @@ document.addEventListener("keypress", (event) => {
 
 function hideMenu() {
 	settingsMenu.classList.toggle("hidden");
-	settingsMenu.style.width = settingsMenu.classList.contains("hidden") ? "0px" : "200px";
+	changeSettingsResolution();
+	
 }
+
+function changeSettingsResolution() {
+	if (settingsMenu.classList.contains("hidden")) {
+		settingsMenu.style.width = "0px";
+		settingsMenu.style.height = "0px";
+	}
+	else {
+		if (window.innerWidth > 800) {
+			settingsMenu.style.width = "200px";
+			settingsMenu.style.height = "100vh";
+			settingsMenu.style.borderWidth = "0px 1px 0px 0px";
+		}
+		else {
+			settingsMenu.style.width = "100vw";
+			settingsMenu.style.height = "125px";
+			settingsMenu.style.borderWidth = "0px 0px 1px 0px";
+		}
+	}
+}
+
+window.addEventListener("resize", (event) => {
+	changeSettingsResolution();
+});

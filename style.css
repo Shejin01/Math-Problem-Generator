@@ -28,11 +28,11 @@ body {
 
 #container {
 	display: flex;
+	flex-direction: row;
 	align-items: flex-start;
 }
 
 #settings {
-	z-index: 1;
 	width: 200px;
 	height: 100vh;
 	flex-shrink: 0;
@@ -48,13 +48,38 @@ body {
 	border-style: solid;
 }
 
-#settings #HideMenuButton {
+#HideMenuButton {
+	position: absolute;
 	visibility: visible;
 	width: 50px;
+	z-index: 1;
+}
+
+@media screen and (max-width: 800px) {
+	#container {
+		flex-direction: column;
+		align-items: center;
+		overflow-x: hidden;
+	}
+
+	#settings {
+		flex-direction: row;
+		width: 100vw;
+		height: 200px;
+		overflow-y: scroll;
+	}
+
+	#HideMenuButton {
+		position: relative;
+	}
 }
 
 .hidden {
 	visibility: hidden;
+}
+
+#ActionButtonMenu > button {
+	width: 90%;
 }
 
 .ui {

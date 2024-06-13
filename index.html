@@ -7,24 +7,28 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<button id="HideMenuButton" class="ui" onclick="hideMenu()">Menu</button>
 	<div id="container">
 		<div id="settings">
-			<button id="HideMenuButton" class="ui" onclick="hideMenu()">Menu</button>
-			<br><br>
-			<label for="operation">Choose an operation:</label>
-			<select name="operation" id="operation" class="ui">
-				<option value="+">Addition</option>
-				<option value="-">Subtraction</option>
-				<option value="*">Multiplication</option>
-				<option value="/">Division</option>
-			</select>
-			<input id="LowerLimit" class="ui" type="number" value=0 placeholder="Lower Limit" title="Lower Limit">
-			<input id="UpperLimit" class="ui" type="number" value=20 placeholder="Upper Limit" title="Upper Limit">
+			<br><br><br>
+			<div>
+				<label for="operation">Choose an operation:</label>
+				<select name="operation" id="operation" class="ui">
+					<option value="+">Addition</option>
+					<option value="-">Subtraction</option>
+					<option value="*">Multiplication</option>
+					<option value="/">Division</option>
+				</select>
+				<input id="LowerLimit" class="ui" type="number" value=0 placeholder="Lower Limit" title="Lower Limit">
+				<input id="UpperLimit" class="ui" type="number" value=20 placeholder="Upper Limit" title="Upper Limit">
+			</div>
 			<br>
-			<button id="GenerateProblemButton" class="ui" onclick="createProblem()">Generate Problem</button>
-			<button id="ClearLastProblemButton" class="ui" onclick="clearLastProblem()">Clear Last Problem</button>
-			<button id="ClearProblemsButton" class="ui" onclick="clearProblems()">Clear Problems</button>
-			<button id="CheckAnswerButton" class="ui" onclick="checkAnswers()">Check Answers</button>
+			<div id="ActionButtonMenu">
+				<button id="GenerateProblemButton" class="ui" onclick="createProblem()">Generate Problem</button>
+				<button id="ClearLastProblemButton" class="ui" onclick="clearLastProblem()">Clear Last Problem</button>
+				<button id="ClearProblemsButton" class="ui" onclick="clearProblems()">Clear Problems</button>
+				<button id="CheckAnswerButton" class="ui" onclick="checkAnswers()">Check Answers</button>
+			</div>
 		</div>
 
 		<div id="questionHolder">
