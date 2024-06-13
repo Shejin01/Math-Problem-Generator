@@ -55,7 +55,7 @@ body {
 	z-index: 1;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 516px) {
 	#container {
 		flex-direction: column;
 		align-items: center;
@@ -89,6 +89,8 @@ body {
 	border: 1px solid var(--gray-color);
 	border-radius: 5px;
 	text-align: center;
+
+	transition: border-color 0.25s ease-in;
 }
 
 .ui:hover {
@@ -121,6 +123,13 @@ body {
 	transition: border-color 0.25s ease-in;
 }
 
+#stepsButton {
+	position: fixed;
+	font-size: 12px;
+	width: 25px;
+	margin: 1px;
+}
+
 .question:hover {
 	border-color: var(--light-gray-color);
 }
@@ -145,3 +154,28 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 input[type="number"] {
 	-moz-appearance: textfield;
 }
+
+/*#stepsMenu {
+	z-index: 999;
+	position: absolute;
+	width: 80%;
+	height: 80%;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	background-color: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--gray-color);
+	border-radius: 10px;
+
+	text-align: center;
+	font-size: 24px;
+}
+
+#closeButton {
+	background-color: rgba(255, 255, 255, 0.05);
+	position: relative;
+	left: 46%;
+}*/

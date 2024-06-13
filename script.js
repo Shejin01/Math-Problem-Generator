@@ -21,6 +21,7 @@ let settingsMenu = document.getElementById("settings");
 let lowerLimit = document.getElementById("LowerLimit");
 let upperLimit = document.getElementById("UpperLimit");
 let roundDecimal = document.getElementById("RoundDecimal");
+let stepsMenu = document.getElementById("stepsMenu");
 
 function randomBetween(min, max) {
 	min = Number(min);
@@ -29,6 +30,15 @@ function randomBetween(min, max) {
 }
 
 function createProblem() {
+	var operation = document.getElementById("operation");
+	if (operation.value == "quadratic_formula") {
+		createQuadraticFormulaProblem();
+		return;
+	}
+	createArithmeticProblem();
+}
+
+function createArithmeticProblem() {
 	var div = document.createElement("div");
 	var problem = document.createElement("p");
 	var answerBox = document.createElement("input")
@@ -78,6 +88,33 @@ function createProblem() {
 	MathJax.typeset();
 }
 
+function createQuadraticFormulaProblem() {
+	var div = document.createElement("div");
+	var problem = document.createElement("p");
+	var answerBox = document.createElement("input")
+
+	div.classList.add("question");
+	problem.classList.add("problem");
+	answerBox.classList.add("answerBox");
+	answerBox.setAttribute("type", "text");
+	answerBox.setAttribute("title", "Answer");
+	answerBox.setAttribute("placeholder", "Answer Format: a, b");
+
+	let a =	randomBetween(lowerLimit.value, upperLimit.value);
+	let b = randomBetween(lowerLimit.value, upperLimit.value);
+
+	problem.innerHTML = String.raw`\[x^2 + ${-a-b}x + ${a*b} = 0 \]`;
+	
+	problem.dataset.answer = `${a}, ${b}`;
+	problem.dataset.answer2 = `${b}, ${a}`;
+	
+	div.appendChild(problem);
+	div.appendChild(answerBox);
+	questionHolder.appendChild(div);
+	questions = document.getElementsByClassName("question");
+	MathJax.typeset();
+}
+
 function clearProblems() {
 	while (questions.length > 0) questions[0].remove();
 }
@@ -88,7 +125,7 @@ function clearLastProblem() {
 
 function checkAnswers() {
 	for (let i = 0; i < questions.length; i++) {
-		if (questions[i].children[0].dataset.answer == questions[i].children[1].value) {
+		if (questions[i].children[0].dataset.answer == questions[i].children[1].value || questions[i].children[0].dataset.answer2 == questions[i].children[1].value) {
 			questions[i].style.borderColor = "green";
 		}
 		else {
@@ -114,7 +151,7 @@ function changeSettingsResolution() {
 		settingsMenu.style.height = "0px";
 	}
 	else {
-		if (window.innerWidth > 800) {
+		if (window.innerWidth > 516) {
 			settingsMenu.style.width = "200px";
 			settingsMenu.style.height = "100vh";
 			settingsMenu.style.borderWidth = "0px 1px 0px 0px";
@@ -130,3 +167,7 @@ function changeSettingsResolution() {
 window.addEventListener("resize", (event) => {
 	changeSettingsResolution();
 });
+
+/*function showStepsMenu() {
+	stepsMenu.classList.toggle("hidden");
+}*/

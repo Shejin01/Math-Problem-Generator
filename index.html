@@ -11,14 +11,15 @@
 	<div id="container">
 		<div id="settings">
 			<br><br><br>
-			<p>Round Decimal Places: <input id="RoundDecimal" type="checkbox"></p>
+			<p>Round Decimal Places: <input id="RoundDecimal" class="ui" type="checkbox"></p>
 			<div>
-				<label for="operation">Choose an operation:</label>
+				<label for="operation">Choose a question type:</label>
 				<select style="width: 90%;" name="operation" id="operation" class="ui">
 					<option value="+">Addition</option>
 					<option value="-">Subtraction</option>
 					<option value="*">Multiplication</option>
 					<option value="/">Division</option>
+					<option value="quadratic_formula">Quadratic Formula</option>
 				</select>
 				<br><br>
 				<label for="LowerLimit">Range: </label>
@@ -36,10 +37,19 @@
 
 		<div id="questionHolder">
 			<div class="question">
-				<p class="problem" data-answer=1>$$a^2 + b^2 = c^2$$</p>
+				<p class="problem" data-answer=5>$$\sqrt{3^2 + 4^2} = $$</p>
 				<input class="answerBox" type="number" title="Answer">
 			</div>
+			<div class="question">
+				<!--button id="stepsButton" class="ui" onclick="showStepsMenu(this)">V</button-->
+				<p class="problem" data-answer="3, 5" data-answer2="5, 3">$$x^2 - 8x + 15 = 0$$</p>
+				<input class="answerBox" type="text" title="Answer" placeholder="Answer Format: a, b">
+			</div>
 		</div>
+
+		<!--div id="stepsMenu">
+			<button id="closeButton" class="ui" onclick="showStepsMenu(this)">X</button>
+		</div-->
 	</div>
 
 	<script src="script.js"></script>
