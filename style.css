@@ -155,27 +155,32 @@ input[type="number"] {
 	-moz-appearance: textfield;
 }
 
-/*#stepsMenu {
+#stepsMenu {
 	z-index: 999;
-	position: absolute;
+	position: fixed;
 	width: 80%;
 	height: 80%;
+	overflow-y: hidden;
 
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
 	background-color: rgba(255, 255, 255, 0.05);
-	backdrop-filter: blur(10px);
 	border: 1px solid var(--gray-color);
 	border-radius: 10px;
+	backdrop-filter: blur(10px);
 
 	text-align: center;
 	font-size: 24px;
 }
 
+#steps {
+	margin: 20px;
+}
+
 #closeButton {
 	background-color: rgba(255, 255, 255, 0.05);
-	position: relative;
-	left: 46%;
-}*/
+	position: absolute;
+	right: 0;
+}

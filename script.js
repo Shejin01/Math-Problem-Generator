@@ -100,16 +100,22 @@ function createQuadraticFormulaProblem() {
 	answerBox.setAttribute("title", "Answer");
 	answerBox.setAttribute("placeholder", "Answer Format: a, b");
 
-	let a =	randomBetween(lowerLimit.value, upperLimit.value);
-	let b = randomBetween(lowerLimit.value, upperLimit.value);
+	let alpha =	randomBetween(lowerLimit.value, upperLimit.value);
+	let beta = randomBetween(lowerLimit.value, upperLimit.value);
 
-	problem.innerHTML = String.raw`\[x^2 + ${-a-b}x + ${a*b} = 0 \]`;
+	problem.innerHTML = String.raw`\[x^2 + ${-alpha-beta}x + ${alpha*beta} = 0 \]`;
 	
-	problem.dataset.answer = `${a}, ${b}`;
-	problem.dataset.answer2 = `${b}, ${a}`;
+	problem.dataset.answer = `${alpha}, ${beta}`;
+	problem.dataset.answer2 = `${beta}, ${alpha}`;
+	problem.dataset.a = 1;
+	problem.dataset.b = `${-alpha-beta}`;
+	problem.dataset.c = `${alpha*beta}`;
+	problem.dataset.alpha = alpha;
+	problem.dataset.beta = beta;
 	
 	div.appendChild(problem);
 	div.appendChild(answerBox);
+	div.innerHTML += `<button id="stepsButton" class="ui" onclick="showStepsMenu(this)">V</button>`;
 	questionHolder.appendChild(div);
 	questions = document.getElementsByClassName("question");
 	MathJax.typeset();
@@ -168,6 +174,24 @@ window.addEventListener("resize", (event) => {
 	changeSettingsResolution();
 });
 
-/*function showStepsMenu() {
-	stepsMenu.classList.toggle("hidden");
-}*/
+function showStepsMenu(button) {
+	stepsMenu.classList.remove("hidden");
+	let question = button.parentNode;
+	let problem = question.children[0];
+	let steps = stepsMenu.children[1];
+	steps.innerHTML = problem.innerHTML;
+	steps.innerHTML += String.raw`\[x^2 - ${problem.dataset.alpha}x - ${problem.dataset.beta}x + ${problem.dataset.c} = 0\]
+	\[x(x - ${problem.dataset.alpha}) - ${problem.dataset.beta}(x - ${problem.dataset.alpha}) = 0\]
+	\[(x - ${problem.dataset.alpha})(x - ${problem.dataset.beta}) = 0\]
+	<p>From the above equation, we have:</p>
+	\[x - ${problem.dataset.alpha} = 0\]
+	\[x = ${problem.dataset.alpha}\]
+	\[x - ${problem.dataset.beta} = 0\]
+	\[x = ${problem.dataset.beta}\]
+	\[ \therefore x = ${problem.dataset.alpha}, ${problem.dataset.beta}\]`;
+	MathJax.typeset();
+}
+
+function hideStepsMenu() {
+	stepsMenu.classList.add("hidden");
+}

@@ -41,15 +41,16 @@
 				<input class="answerBox" type="number" title="Answer">
 			</div>
 			<div class="question">
-				<!--button id="stepsButton" class="ui" onclick="showStepsMenu(this)">V</button-->
-				<p class="problem" data-answer="3, 5" data-answer2="5, 3">$$x^2 - 8x + 15 = 0$$</p>
+				<p class="problem" data-answer="3, 5" data-answer2="5, 3" data-a=1 data-b=-8 data-c=15 data-alpha=3 data-beta=5>$$x^2 - 8x + 15 = 0$$</p>
 				<input class="answerBox" type="text" title="Answer" placeholder="Answer Format: a, b">
+				<button id="stepsButton" class="ui" onclick="showStepsMenu(this)">V</button>
 			</div>
 		</div>
 
-		<!--div id="stepsMenu">
-			<button id="closeButton" class="ui" onclick="showStepsMenu(this)">X</button>
-		</div-->
+		<div id="stepsMenu" class="hidden">
+			<button id="closeButton" class="ui" onclick="hideStepsMenu()">X</button>
+			<div id="steps"></div>
+		</div>
 	</div>
 
 	<script src="script.js"></script>
